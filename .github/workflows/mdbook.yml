@@ -32,6 +32,11 @@ jobs:
       MDBOOK_VERSION: 0.5.3
     steps:
       - uses: actions/checkout@v4
+      - name: Install pdflatex Dependencies
+        run: |
+          sudo apt-get update
+          # Choose texlive-latex-recommended for a lighter install, or texlive-full for everything
+          sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
       - name: Install Pandoc
         uses: pandoc/actions/setup@v1
       - name: Install mdBook
